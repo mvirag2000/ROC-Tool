@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
@@ -66,12 +65,13 @@ namespace ROC_Tool
             series6.ChartType = SeriesChartType.Line;
             series6.BorderDashStyle = ChartDashStyle.Dash;
             series6.Color = Color.DarkBlue;
-            series6.BorderWidth = 2;
+            series6.BorderWidth = 1;
 
             series7 = rocChart.Series.Add("ROCDot");
             series7.ChartType = SeriesChartType.Point;
             series7.Color = Color.Black;
             series7.BorderWidth = 3;
+            series7.CustomProperties = "IsXAxisQuantitative=True";
 
             ratesChart.ChartAreas[0].AxisX.Title = "Threshold Value";
             ratesChart.ChartAreas[0].AxisX.Minimum = 0;
@@ -85,7 +85,8 @@ namespace ROC_Tool
             rocChart.ChartAreas[0].AxisX.Minimum = 0;
             rocChart.ChartAreas[0].AxisX.Maximum = 1;
             rocChart.ChartAreas[0].AxisY.Title = "True Positive Rate";
-            rocChart.ChartAreas[0].AxisX.RoundAxisValues();
+            rocChart.ChartAreas[0].AxisY.Minimum = 0;
+            rocChart.ChartAreas[0].AxisY.Maximum = 1;
             rocChart.Legends[0].Enabled = false;
         }
 
@@ -125,24 +126,24 @@ namespace ROC_Tool
 
                 int totalPos = resultsTable.AsEnumerable().Where(row => row.Field<int>("Actual") == 1).Count();
                 int totalNeg = resultsTable.AsEnumerable().Where(row => row.Field<int>("Actual") == 0).Count();
-                textBox1.Text = resultsTable.Rows.Count.ToString();
-                textBox2.Text = totalPos.ToString();
-                textBox3.Text = totalNeg.ToString();
+                textBox1.Text = resultsTable.Rows.Count.ToString("N");
+                textBox2.Text = totalPos.ToString("N");
+                textBox3.Text = totalNeg.ToString("N");
 
-                for (double cutoff = 0.01; cutoff <= 0.99; cutoff += 0.01)
+                for (decimal cutoff = 0.0M; cutoff <= 1.0M; cutoff += 0.01M)
                 {
-                    var assertPos = resultsTable.AsEnumerable().Where(row => row.Field<double>("Proba") >= cutoff);  //We need this subtable NOT just its count 
+                    var assertPos = resultsTable.AsEnumerable().Where(row => row.Field<double>("Proba") >= (double) cutoff);  //We need this subtable NOT just its count 
                     int truePos = assertPos.AsEnumerable().Where(row => row.Field<int>("Actual") == 1).Count();
                     int falsePos = assertPos.Count() - truePos;
 
-                    var assertNeg = resultsTable.AsEnumerable().Where(row => row.Field<double>("Proba") < cutoff);  //We need this subtable NOT just its count 
+                    var assertNeg = resultsTable.AsEnumerable().Where(row => row.Field<double>("Proba") < (double) cutoff);  //We need this subtable NOT just its count 
                     int trueNeg = assertNeg.AsEnumerable().Where(row => row.Field<int>("Actual") == 0).Count();
                     int falseNeg = assertNeg.Count() - trueNeg;
 
-                    double TPR = (totalPos > 0) ? (double)truePos / totalPos : 1;
-                    double TNR = (totalNeg > 0) ? (double)trueNeg / totalNeg : 1;
-                    double FPR = (totalNeg > 0) ? (double)falsePos / totalNeg : 1;
-                    double FNR = (totalPos > 0) ? (double)falseNeg / totalPos : 1;
+                    double TPR = (totalPos > 0) ? (double) truePos / totalPos : 1;
+                    double TNR = (totalNeg > 0) ? (double) trueNeg / totalNeg : 1;
+                    double FPR = (totalNeg > 0) ? (double) falsePos / totalNeg : 1;
+                    double FNR = (totalPos > 0) ? (double) falseNeg / totalPos : 1;
 
                     DataRow newRow = confusionTable.NewRow();
                     newRow.ItemArray = new object[] { cutoff, TPR, TNR, FPR, FNR };
@@ -155,6 +156,8 @@ namespace ROC_Tool
                     series5.Points.AddXY(row["FPR"], row["TPR"]);
                     series6.Points.AddXY(row["FPR"], row["FPR"]);
                 }
+                series5.Points.AddXY(1, 1); //Force upper corner in case sample doesn't have enough FP 
+                series6.Points.AddXY(1, 1);
                 trackBar1_Scroll(sender, e);
             }
         }

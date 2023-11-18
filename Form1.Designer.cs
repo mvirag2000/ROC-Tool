@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -93,16 +93,16 @@
             // 
             // ratesChart
             // 
-            chartArea1.Name = "ChartArea1";
-            this.ratesChart.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.ratesChart.Legends.Add(legend1);
+            chartArea3.Name = "ChartArea1";
+            this.ratesChart.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.ratesChart.Legends.Add(legend3);
             this.ratesChart.Location = new System.Drawing.Point(12, 90);
             this.ratesChart.Name = "ratesChart";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.ratesChart.Series.Add(series1);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.ratesChart.Series.Add(series3);
             this.ratesChart.Size = new System.Drawing.Size(457, 300);
             this.ratesChart.TabIndex = 2;
             this.ratesChart.Text = "chart1";
@@ -120,16 +120,16 @@
             // 
             // rocChart
             // 
-            chartArea2.Name = "ChartArea1";
-            this.rocChart.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.rocChart.Legends.Add(legend2);
+            chartArea4.Name = "ChartArea1";
+            this.rocChart.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.rocChart.Legends.Add(legend4);
             this.rocChart.Location = new System.Drawing.Point(475, 90);
             this.rocChart.Name = "rocChart";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.rocChart.Series.Add(series2);
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            this.rocChart.Series.Add(series4);
             this.rocChart.Size = new System.Drawing.Size(367, 300);
             this.rocChart.TabIndex = 4;
             this.rocChart.Text = "chart1";
@@ -167,6 +167,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 8;
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox2
             // 
@@ -174,6 +175,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 20);
             this.textBox2.TabIndex = 9;
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox3
             // 
@@ -181,6 +183,7 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(100, 20);
             this.textBox3.TabIndex = 10;
+            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // Form1
             // 

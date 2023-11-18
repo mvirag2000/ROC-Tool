@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/ROC Tool.csproj.dtbcache.json
+/bin/Debug/ROC Tool.exe
+/bin/Debug/ROC Tool.pdb

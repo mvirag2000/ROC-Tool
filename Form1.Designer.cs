@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,6 +48,16 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
+            this.FPRBox = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.TNRBox = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.FNRBox = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.TPRBox = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cutoffBox = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ratesChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
@@ -61,7 +71,7 @@
             this.dataToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(861, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1021, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -93,16 +103,16 @@
             // 
             // ratesChart
             // 
-            chartArea3.Name = "ChartArea1";
-            this.ratesChart.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.ratesChart.Legends.Add(legend3);
+            chartArea5.Name = "ChartArea1";
+            this.ratesChart.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            this.ratesChart.Legends.Add(legend5);
             this.ratesChart.Location = new System.Drawing.Point(12, 90);
             this.ratesChart.Name = "ratesChart";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.ratesChart.Series.Add(series3);
+            series5.ChartArea = "ChartArea1";
+            series5.Legend = "Legend1";
+            series5.Name = "Series1";
+            this.ratesChart.Series.Add(series5);
             this.ratesChart.Size = new System.Drawing.Size(457, 300);
             this.ratesChart.TabIndex = 2;
             this.ratesChart.Text = "chart1";
@@ -120,16 +130,16 @@
             // 
             // rocChart
             // 
-            chartArea4.Name = "ChartArea1";
-            this.rocChart.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.rocChart.Legends.Add(legend4);
-            this.rocChart.Location = new System.Drawing.Point(475, 90);
+            chartArea6.Name = "ChartArea1";
+            this.rocChart.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            this.rocChart.Legends.Add(legend6);
+            this.rocChart.Location = new System.Drawing.Point(642, 90);
             this.rocChart.Name = "rocChart";
-            series4.ChartArea = "ChartArea1";
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.rocChart.Series.Add(series4);
+            series6.ChartArea = "ChartArea1";
+            series6.Legend = "Legend1";
+            series6.Name = "Series1";
+            this.rocChart.Series.Add(series6);
             this.rocChart.Size = new System.Drawing.Size(367, 300);
             this.rocChart.TabIndex = 4;
             this.rocChart.Text = "chart1";
@@ -163,33 +173,136 @@
             // 
             // textBox1
             // 
+            this.textBox1.Enabled = false;
             this.textBox1.Location = new System.Drawing.Point(66, 26);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.Size = new System.Drawing.Size(66, 20);
             this.textBox1.TabIndex = 8;
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox2
             // 
+            this.textBox2.Enabled = false;
             this.textBox2.Location = new System.Drawing.Point(66, 46);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.Size = new System.Drawing.Size(66, 20);
             this.textBox2.TabIndex = 9;
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox3
             // 
+            this.textBox3.Enabled = false;
             this.textBox3.Location = new System.Drawing.Point(66, 66);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
+            this.textBox3.Size = new System.Drawing.Size(66, 20);
             this.textBox3.TabIndex = 10;
             this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // FPRBox
+            // 
+            this.FPRBox.Enabled = false;
+            this.FPRBox.Location = new System.Drawing.Point(530, 194);
+            this.FPRBox.Name = "FPRBox";
+            this.FPRBox.Size = new System.Drawing.Size(66, 20);
+            this.FPRBox.TabIndex = 12;
+            this.FPRBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(475, 197);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(31, 13);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "FPR:";
+            // 
+            // TNRBox
+            // 
+            this.TNRBox.Enabled = false;
+            this.TNRBox.Location = new System.Drawing.Point(530, 168);
+            this.TNRBox.Name = "TNRBox";
+            this.TNRBox.Size = new System.Drawing.Size(66, 20);
+            this.TNRBox.TabIndex = 14;
+            this.TNRBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(475, 171);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(33, 13);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "TNR:";
+            // 
+            // FNRBox
+            // 
+            this.FNRBox.Enabled = false;
+            this.FNRBox.Location = new System.Drawing.Point(530, 142);
+            this.FNRBox.Name = "FNRBox";
+            this.FNRBox.Size = new System.Drawing.Size(66, 20);
+            this.FNRBox.TabIndex = 16;
+            this.FNRBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(475, 145);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(32, 13);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "FNR:";
+            // 
+            // TPRBox
+            // 
+            this.TPRBox.Enabled = false;
+            this.TPRBox.Location = new System.Drawing.Point(530, 116);
+            this.TPRBox.Name = "TPRBox";
+            this.TPRBox.Size = new System.Drawing.Size(66, 20);
+            this.TPRBox.TabIndex = 18;
+            this.TPRBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(475, 119);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(32, 13);
+            this.label7.TabIndex = 17;
+            this.label7.Text = "TPR:";
+            // 
+            // cutoffBox
+            // 
+            this.cutoffBox.Enabled = false;
+            this.cutoffBox.Location = new System.Drawing.Point(530, 90);
+            this.cutoffBox.Name = "cutoffBox";
+            this.cutoffBox.Size = new System.Drawing.Size(66, 20);
+            this.cutoffBox.TabIndex = 20;
+            this.cutoffBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(475, 93);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(57, 13);
+            this.label8.TabIndex = 19;
+            this.label8.Text = "Threshold:";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(861, 450);
+            this.ClientSize = new System.Drawing.Size(1021, 450);
+            this.Controls.Add(this.cutoffBox);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.TPRBox);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.FNRBox);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.TNRBox);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.FPRBox);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
@@ -230,6 +343,16 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox FPRBox;
+        private System.Windows.Forms.TextBox TNRBox;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox FNRBox;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox TPRBox;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox cutoffBox;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label4;
     }
 }
 

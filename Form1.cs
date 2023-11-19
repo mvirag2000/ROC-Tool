@@ -22,6 +22,7 @@ namespace ROC_Tool
         public Series series6 = new Series();
         public Series series7 = new Series();   
         public decimal threshold = 0.50M; //threshold as <double> created some precision problems 
+        public double TPR, TNR, FPR, FNR; 
 
         public Form1()
         {
@@ -140,15 +141,17 @@ namespace ROC_Tool
                     int trueNeg = assertNeg.AsEnumerable().Where(row => row.Field<int>("Actual") == 0).Count();
                     int falseNeg = assertNeg.Count() - trueNeg;
 
-                    double TPR = (totalPos > 0) ? (double) truePos / totalPos : 1;
-                    double TNR = (totalNeg > 0) ? (double) trueNeg / totalNeg : 1;
-                    double FPR = (totalNeg > 0) ? (double) falsePos / totalNeg : 1;
-                    double FNR = (totalPos > 0) ? (double) falseNeg / totalPos : 1;
+                    TPR = (totalPos > 0) ? (double) truePos / totalPos : 1;
+                    TNR = (totalNeg > 0) ? (double) trueNeg / totalNeg : 1;
+                    FPR = (totalNeg > 0) ? (double) falsePos / totalNeg : 1;
+                    FNR = (totalPos > 0) ? (double) falseNeg / totalPos : 1;
 
                     DataRow newRow = confusionTable.NewRow();
                     newRow.ItemArray = new object[] { cutoff, TPR, TNR, FPR, FNR };
                     confusionTable.Rows.Add(newRow);
                 }
+                series5.Points.AddXY(1, 1); //Force upper corner in case sample doesn't have enough FP 
+                series6.Points.AddXY(1, 1);
                 foreach (DataRow row in confusionTable.Rows)
                 {
                     series1.Points.AddXY(row["Cutoff"], row["TPR"]);
@@ -156,8 +159,6 @@ namespace ROC_Tool
                     series5.Points.AddXY(row["FPR"], row["TPR"]);
                     series6.Points.AddXY(row["FPR"], row["FPR"]);
                 }
-                series5.Points.AddXY(1, 1); //Force upper corner in case sample doesn't have enough FP 
-                series6.Points.AddXY(1, 1);
                 trackBar1_Scroll(sender, e);
             }
         }
@@ -174,10 +175,19 @@ namespace ROC_Tool
             rocChart.Series["ROCDot"].Points.Clear(); 
             foreach (DataRow row in y1)
             {
-                series4.Points.AddXY(threshold, row["TPR"]);
-                series4.Points.AddXY(threshold, row["TNR"]);
-                series7.Points.AddXY(row["FPR"], row["TPR"]);
+                TPR = (double) row["TPR"];
+                TNR = (double) row["TNR"];
+                FPR = (double) row["FPR"];
+                FNR = (double) row["FNR"];
             }
+            series4.Points.AddXY(threshold, TPR);
+            series4.Points.AddXY(threshold, TNR);
+            series7.Points.AddXY(FPR, TPR);
+            cutoffBox.Text = threshold.ToString();
+            TPRBox.Text = TPR.ToString("F2");
+            TNRBox.Text = TNR.ToString("F2");
+            FPRBox.Text = FPR.ToString("F2");
+            FNRBox.Text = FNR.ToString("F2");
         }
         private void dataToolStripMenuItem_Click(object sender, EventArgs e)
         {

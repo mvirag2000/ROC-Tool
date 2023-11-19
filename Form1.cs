@@ -12,8 +12,8 @@ namespace ROC_Tool
     public partial class Form1 : Form
     {   // DATA DIVISION //
         private Form2 form2;
-        public DataTable resultsTable = new DataTable();
-        public DataTable confusionTable = new DataTable();
+        public DataTable resultsTable;
+        public DataTable confusionTable;
         public Series series1 = new Series();
         public Series series2 = new Series();
         public Series series3 = new Series();
@@ -21,10 +21,67 @@ namespace ROC_Tool
         public Series series5 = new Series();
         public Series series6 = new Series();
         public Series series7 = new Series();   
+        public Series series8 = new Series();
         public decimal threshold = 0.50M; //threshold as <double> created some precision problems 
         public double TPR, TNR, FPR, FNR;
         public double precision, accuracy, balanced, f1;
-        public int totalPos, totalNeg; 
+        public double cost;
+        public int totalPos, totalNeg;
+
+        private void costTPR_TextChanged(object sender, EventArgs e)
+        {
+            plotCostChart();
+            trackBar1_Scroll(sender, e);
+        }
+        private void costTNR_TextChanged(object sender, EventArgs e)
+        {
+            plotCostChart();
+            trackBar1_Scroll(sender, e);
+        }
+
+        private void costFNR_TextChanged(object sender, EventArgs e)
+        {
+            plotCostChart();
+            trackBar1_Scroll(sender, e);
+        }
+
+        private void costFPR_TextChanged(object sender, EventArgs e)
+        {
+            plotCostChart();
+            trackBar1_Scroll(sender, e);
+        }
+
+        private void costTPR_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Suppress the character
+            }
+        }
+
+        private void costFNR_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Suppress the character
+            }
+        }
+
+        private void costTNR_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Suppress the character
+            }
+        }
+
+        private void costFPR_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Suppress the character
+            }
+        }
 
         public Form1()
         {
@@ -33,12 +90,6 @@ namespace ROC_Tool
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            confusionTable.Columns.Add("Cutoff", typeof(decimal));
-            confusionTable.Columns.Add("TPR", typeof(double));
-            confusionTable.Columns.Add("TNR", typeof(double));
-            confusionTable.Columns.Add("FPR", typeof(double));
-            confusionTable.Columns.Add("FNR", typeof(double));
-
             series1 = ratesChart.Series.Add("TPR");
             series1.ChartType = SeriesChartType.Line;
             series1.Color = Color.DarkBlue;
@@ -76,6 +127,11 @@ namespace ROC_Tool
             series7.BorderWidth = 3;
             series7.CustomProperties = "IsXAxisQuantitative=True";
 
+            series8 = costChart.Series.Add("Cost");
+            series8.ChartType = SeriesChartType.Line;
+            series8.Color = Color.DarkOrange;
+            series8.BorderWidth = 2;
+
             ratesChart.ChartAreas[0].AxisX.Title = "Threshold Value";
             ratesChart.ChartAreas[0].AxisX.Minimum = 0;
             ratesChart.ChartAreas[0].AxisX.Maximum = 1;
@@ -91,11 +147,18 @@ namespace ROC_Tool
             rocChart.ChartAreas[0].AxisY.Minimum = 0;
             rocChart.ChartAreas[0].AxisY.Maximum = 1;
             rocChart.Legends[0].Enabled = false;
+
+            costChart.ChartAreas[0].AxisX.Title = "Threshold Value";
+            costChart.ChartAreas[0].AxisX.Minimum = 0;
+            costChart.ChartAreas[0].AxisX.Maximum = 1;
+            costChart.ChartAreas[0].AxisY.Title = "Calculated Cost";
+            costChart.Legends[0].Enabled = false;
         }
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)  //Maybe check for file already open
             {
+                resultsTable = new DataTable(); 
                 resultsTable.Columns.Add("Proba", typeof(double));
                 resultsTable.Columns.Add("Actual", typeof(int));
                 try
@@ -132,6 +195,13 @@ namespace ROC_Tool
                 textBox2.Text = totalPos.ToString("N");
                 textBox3.Text = totalNeg.ToString("N");
 
+                confusionTable = new DataTable();
+                confusionTable.Columns.Add("Cutoff", typeof(decimal));
+                confusionTable.Columns.Add("TPR", typeof(double));
+                confusionTable.Columns.Add("TNR", typeof(double));
+                confusionTable.Columns.Add("FPR", typeof(double));
+                confusionTable.Columns.Add("FNR", typeof(double));
+
                 for (decimal cutoff = 0.0M; cutoff <= 1.0M; cutoff += 0.01M)
                 {
                     var assertPos = resultsTable.AsEnumerable().Where(row => row.Field<double>("Proba") >= (double) cutoff);  //We need this subtable NOT just its count 
@@ -159,14 +229,31 @@ namespace ROC_Tool
                 double AUC = 0;
                 foreach (DataRow row in confusionTable.Rows)
                 {
-                    series1.Points.AddXY(row["Cutoff"], row["TPR"]);
-                    series2.Points.AddXY(row["Cutoff"], row["TNR"]);
-                    series5.Points.AddXY(row["FPR"], row["TPR"]);
-                    AUC += (prevX - (double) row["FPR"]) * (prevY + (double) row["TPR"]) / 2;
-                    prevX = (double) row["FPR"]; prevY = (double) row["TPR"]; 
+                    TPR = (double)row["TPR"];
+                    TNR = (double)row["TNR"];
+                    FPR = (double)row["FPR"];
+                    FNR = (double)row["FNR"];
+                    series1.Points.AddXY(row["Cutoff"], TPR);
+                    series2.Points.AddXY(row["Cutoff"], TNR);
+                    series5.Points.AddXY(FPR, TPR);
+                    AUC += (prevX - FPR) * (prevY + TPR) / 2;
+                    prevX = FPR; prevY = TPR; 
                 }
+                plotCostChart();
                 aucBox.Text = AUC.ToString("F2");
                 trackBar1_Scroll(sender, e);
+            }
+        }
+        public void plotCostChart()
+        {
+            costChart.Series["Cost"].Points.Clear();
+            foreach (DataRow row in confusionTable.Rows)
+            {
+                TPR = (double)row["TPR"];
+                TNR = (double)row["TNR"];
+                FPR = (double)row["FPR"];
+                FNR = (double)row["FNR"];
+                series8.Points.AddXY(row["Cutoff"], computeCost());
             }
         }
         private void trackBar1_Scroll(object sender, EventArgs e)
@@ -199,7 +286,8 @@ namespace ROC_Tool
             precision = (TP + FP) > 0 ? TP / (TP + FP) : 1; 
             accuracy = (TP + TN) / (totalPos + totalNeg);
             balanced = (TPR + TNR) / 2;
-            f1 = 2 * precision * TPR / (precision + TPR); 
+            f1 = 2 * precision * TPR / (precision + TPR);
+            costBox.Text = computeCost().ToString();
 
             cutoffBox.Text = threshold.ToString();
             TPRBox.Text = TPR.ToString("F2");
@@ -210,6 +298,14 @@ namespace ROC_Tool
             accuracyBox.Text = accuracy.ToString("F2");
             balancedBox.Text = balanced.ToString("F2");
             f1Box.Text = f1.ToString("F2");
+        }
+        public double computeCost()
+        {
+            cost = TPR * Convert.ToDouble(costTPR.Text);
+            cost += TNR * Convert.ToDouble(costTNR.Text);
+            cost -= FPR * Convert.ToDouble(costFPR.Text);
+            cost -= FNR * Convert.ToDouble(costFNR.Text);
+            return cost;
         }
         private void dataToolStripMenuItem_Click(object sender, EventArgs e)
         {

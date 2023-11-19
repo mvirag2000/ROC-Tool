@@ -35,6 +35,9 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -70,10 +73,18 @@
             this.aucBox = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.label14 = new System.Windows.Forms.Label();
+            this.costTPR = new System.Windows.Forms.TextBox();
+            this.costFNR = new System.Windows.Forms.TextBox();
+            this.costTNR = new System.Windows.Forms.TextBox();
+            this.costFPR = new System.Windows.Forms.TextBox();
+            this.costBox = new System.Windows.Forms.TextBox();
+            this.costChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ratesChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rocChart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.costChart)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -84,7 +95,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1191, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(996, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -99,7 +110,7 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
@@ -120,7 +131,7 @@
             this.ratesChart.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.ratesChart.Legends.Add(legend1);
-            this.ratesChart.Location = new System.Drawing.Point(14, 90);
+            this.ratesChart.Location = new System.Drawing.Point(14, 31);
             this.ratesChart.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.ratesChart.Name = "ratesChart";
             series1.ChartArea = "ChartArea1";
@@ -133,12 +144,12 @@
             // 
             // trackBar1
             // 
-            this.trackBar1.Location = new System.Drawing.Point(69, 396);
+            this.trackBar1.Location = new System.Drawing.Point(89, 337);
             this.trackBar1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.trackBar1.Maximum = 99;
             this.trackBar1.Minimum = 1;
             this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(478, 45);
+            this.trackBar1.Size = new System.Drawing.Size(445, 45);
             this.trackBar1.TabIndex = 3;
             this.trackBar1.Value = 50;
             this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
@@ -149,14 +160,14 @@
             this.rocChart.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
             this.rocChart.Legends.Add(legend2);
-            this.rocChart.Location = new System.Drawing.Point(749, 90);
+            this.rocChart.Location = new System.Drawing.Point(584, 31);
             this.rocChart.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.rocChart.Name = "rocChart";
             series2.ChartArea = "ChartArea1";
             series2.Legend = "Legend1";
             series2.Name = "Series1";
             this.rocChart.Series.Add(series2);
-            this.rocChart.Size = new System.Drawing.Size(428, 300);
+            this.rocChart.Size = new System.Drawing.Size(410, 300);
             this.rocChart.TabIndex = 4;
             this.rocChart.Text = "chart1";
             // 
@@ -164,7 +175,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(10, 29);
+            this.label1.Location = new System.Drawing.Point(10, 390);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 13);
@@ -175,7 +186,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(10, 49);
+            this.label2.Location = new System.Drawing.Point(10, 410);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 13);
@@ -186,7 +197,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(10, 69);
+            this.label3.Location = new System.Drawing.Point(10, 430);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(62, 13);
@@ -197,7 +208,7 @@
             // 
             this.textBox1.Enabled = false;
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(77, 26);
+            this.textBox1.Location = new System.Drawing.Point(77, 387);
             this.textBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(76, 20);
@@ -208,7 +219,7 @@
             // 
             this.textBox2.Enabled = false;
             this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(77, 46);
+            this.textBox2.Location = new System.Drawing.Point(77, 407);
             this.textBox2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(76, 20);
@@ -219,7 +230,7 @@
             // 
             this.textBox3.Enabled = false;
             this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(77, 66);
+            this.textBox3.Location = new System.Drawing.Point(77, 427);
             this.textBox3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(76, 20);
@@ -230,7 +241,7 @@
             // 
             this.FPRBox.Enabled = false;
             this.FPRBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FPRBox.Location = new System.Drawing.Point(618, 194);
+            this.FPRBox.Location = new System.Drawing.Point(400, 491);
             this.FPRBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.FPRBox.Name = "FPRBox";
             this.FPRBox.Size = new System.Drawing.Size(76, 20);
@@ -241,7 +252,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(554, 197);
+            this.label4.Location = new System.Drawing.Point(336, 494);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(35, 13);
@@ -253,7 +264,7 @@
             // 
             this.TNRBox.Enabled = false;
             this.TNRBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TNRBox.Location = new System.Drawing.Point(618, 168);
+            this.TNRBox.Location = new System.Drawing.Point(400, 465);
             this.TNRBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.TNRBox.Name = "TNRBox";
             this.TNRBox.Size = new System.Drawing.Size(76, 20);
@@ -264,20 +275,20 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(554, 171);
+            this.label5.Location = new System.Drawing.Point(336, 468);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(37, 13);
             this.label5.TabIndex = 13;
             this.label5.Text = "TNR:";
             this.toolTip1.SetToolTip(this.label5, "This is the rate of true negatives, also known as specificity. A higher cutoff me" +
-"ans more true negatives but also more false ones.");
+        "ans more true negatives but also more false ones.");
             // 
             // FNRBox
             // 
             this.FNRBox.Enabled = false;
             this.FNRBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FNRBox.Location = new System.Drawing.Point(618, 142);
+            this.FNRBox.Location = new System.Drawing.Point(400, 439);
             this.FNRBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.FNRBox.Name = "FNRBox";
             this.FNRBox.Size = new System.Drawing.Size(76, 20);
@@ -288,7 +299,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(554, 145);
+            this.label6.Location = new System.Drawing.Point(336, 442);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(36, 13);
@@ -300,7 +311,7 @@
             // 
             this.TPRBox.Enabled = false;
             this.TPRBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TPRBox.Location = new System.Drawing.Point(618, 116);
+            this.TPRBox.Location = new System.Drawing.Point(400, 413);
             this.TPRBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.TPRBox.Name = "TPRBox";
             this.TPRBox.Size = new System.Drawing.Size(76, 20);
@@ -311,20 +322,20 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(554, 119);
+            this.label7.Location = new System.Drawing.Point(336, 416);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(36, 13);
             this.label7.TabIndex = 17;
             this.label7.Text = "TPR:";
             this.toolTip1.SetToolTip(this.label7, "This is the rate of true positives, also known as sensitivity. A lower cutoff mea" +
-"ns more true postives but also more false ones.");
+        "ns more true postives but also more false ones.");
             // 
             // cutoffBox
             // 
             this.cutoffBox.Enabled = false;
             this.cutoffBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cutoffBox.Location = new System.Drawing.Point(618, 90);
+            this.cutoffBox.Location = new System.Drawing.Point(400, 387);
             this.cutoffBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cutoffBox.Name = "cutoffBox";
             this.cutoffBox.Size = new System.Drawing.Size(76, 20);
@@ -335,19 +346,20 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(554, 93);
+            this.label8.Location = new System.Drawing.Point(336, 390);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(45, 13);
             this.label8.TabIndex = 19;
             this.label8.Text = "Cutoff:";
-            this.toolTip1.SetToolTip(this.label8, "This is the threshold value currently selected by the slider control. Cases scoring above the threshold are deemed positive.");
+            this.toolTip1.SetToolTip(this.label8, "This is the threshold value currently selected by the slider control. Cases scori" +
+        "ng above the threshold are deemed positive.");
             // 
             // precisionBox
             // 
             this.precisionBox.Enabled = false;
             this.precisionBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.precisionBox.Location = new System.Drawing.Point(618, 220);
+            this.precisionBox.Location = new System.Drawing.Point(77, 468);
             this.precisionBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.precisionBox.Name = "precisionBox";
             this.precisionBox.Size = new System.Drawing.Size(76, 20);
@@ -358,19 +370,19 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(554, 223);
+            this.label9.Location = new System.Drawing.Point(13, 471);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(63, 13);
             this.label9.TabIndex = 27;
             this.label9.Text = "Precision:";
-            this.toolTip1.SetToolTip(this.label9, "This is the rate of predicted positives that are correct."); 
+            this.toolTip1.SetToolTip(this.label9, "This is the rate of predicted positives that are correct.");
             // 
             // accuracyBox
             // 
-this.accuracyBox.Enabled = false;
+            this.accuracyBox.Enabled = false;
             this.accuracyBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.accuracyBox.Location = new System.Drawing.Point(618, 246);
+            this.accuracyBox.Location = new System.Drawing.Point(77, 494);
             this.accuracyBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.accuracyBox.Name = "accuracyBox";
             this.accuracyBox.Size = new System.Drawing.Size(76, 20);
@@ -381,19 +393,20 @@ this.accuracyBox.Enabled = false;
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(554, 249);
+            this.label10.Location = new System.Drawing.Point(13, 497);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(64, 13);
             this.label10.TabIndex = 25;
             this.label10.Text = "Accuracy:";
-            this.toolTip1.SetToolTip(this.label10, "This is the intuitive rate of correct predictions, but it can be misleading if the data is imbalanced.");
+            this.toolTip1.SetToolTip(this.label10, "This is the intuitive rate of correct predictions, but it can be misleading if th" +
+        "e data is imbalanced.");
             // 
             // balancedBox
             // 
             this.balancedBox.Enabled = false;
             this.balancedBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.balancedBox.Location = new System.Drawing.Point(618, 272);
+            this.balancedBox.Location = new System.Drawing.Point(77, 520);
             this.balancedBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.balancedBox.Name = "balancedBox";
             this.balancedBox.Size = new System.Drawing.Size(76, 20);
@@ -404,19 +417,20 @@ this.accuracyBox.Enabled = false;
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(554, 275);
+            this.label11.Location = new System.Drawing.Point(13, 523);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(64, 13);
             this.label11.TabIndex = 23;
             this.label11.Text = "Balanced:";
-            this.toolTip1.SetToolTip(this.label11, "This is the average of the true negative rate and the true positive rate, obviously the best choice for imbalanced data");
+            this.toolTip1.SetToolTip(this.label11, "This is the average of the true negative rate and the true positive rate, obvious" +
+        "ly the best choice for imbalanced data");
             // 
             // f1Box
             // 
             this.f1Box.Enabled = false;
             this.f1Box.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.f1Box.Location = new System.Drawing.Point(618, 298);
+            this.f1Box.Location = new System.Drawing.Point(77, 546);
             this.f1Box.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.f1Box.Name = "f1Box";
             this.f1Box.Size = new System.Drawing.Size(76, 20);
@@ -427,19 +441,20 @@ this.accuracyBox.Enabled = false;
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(554, 301);
+            this.label12.Location = new System.Drawing.Point(13, 549);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(62, 13);
             this.label12.TabIndex = 21;
             this.label12.Text = "F1 Score:";
-            this.toolTip1.SetToolTip(this.label12, "This is the harmonic mean of precision and recall, another good choice for imbalanced data");
+            this.toolTip1.SetToolTip(this.label12, "This is the harmonic mean of precision and recall, another good choice for imbala" +
+        "nced data");
             // 
             // aucBox
             // 
             this.aucBox.Enabled = false;
             this.aucBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.aucBox.Location = new System.Drawing.Point(239, 26);
+            this.aucBox.Location = new System.Drawing.Point(239, 387);
             this.aucBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.aucBox.Name = "aucBox";
             this.aucBox.Size = new System.Drawing.Size(76, 20);
@@ -450,23 +465,127 @@ this.accuracyBox.Enabled = false;
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(172, 29);
+            this.label13.Location = new System.Drawing.Point(172, 390);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(66, 13);
             this.label13.TabIndex = 29;
             this.label13.Text = "ROC AUC:";
-            this.toolTip1.SetToolTip(this.label13, "This is the area under the ROC curve. It measures the overall utility of the model, regardless of the threshold.");
+            this.toolTip1.SetToolTip(this.label13, "This is the area under the ROC curve. It measures the overall utility of the mode" +
+        "l, regardless of the threshold.");
             // 
             // toolTip1
             // 
             this.toolTip1.ShowAlways = true;
             // 
+            // label14
+            // 
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(484, 390);
+            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(76, 13);
+            this.label14.TabIndex = 35;
+            this.label14.Text = "Cost Parms";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.toolTip1.SetToolTip(this.label14, "This is the area under the ROC curve. It measures the overall utility of the mode" +
+        "l, regardless of the threshold.");
+            // 
+            // costTPR
+            // 
+            this.costTPR.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.costTPR.Location = new System.Drawing.Point(484, 413);
+            this.costTPR.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.costTPR.Name = "costTPR";
+            this.costTPR.Size = new System.Drawing.Size(76, 20);
+            this.costTPR.TabIndex = 31;
+            this.costTPR.Text = "1";
+            this.costTPR.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.costTPR.TextChanged += new System.EventHandler(this.costTPR_TextChanged);
+            this.costTPR.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.costTPR_KeyPress);
+            // 
+            // costFNR
+            // 
+            this.costFNR.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.costFNR.ForeColor = System.Drawing.Color.OrangeRed;
+            this.costFNR.Location = new System.Drawing.Point(484, 439);
+            this.costFNR.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.costFNR.Name = "costFNR";
+            this.costFNR.Size = new System.Drawing.Size(76, 20);
+            this.costFNR.TabIndex = 32;
+            this.costFNR.Text = "1";
+            this.costFNR.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.costFNR.TextChanged += new System.EventHandler(this.costFNR_TextChanged);
+            this.costFNR.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.costFNR_KeyPress);
+            // 
+            // costTNR
+            // 
+            this.costTNR.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.costTNR.Location = new System.Drawing.Point(484, 465);
+            this.costTNR.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.costTNR.Name = "costTNR";
+            this.costTNR.Size = new System.Drawing.Size(76, 20);
+            this.costTNR.TabIndex = 33;
+            this.costTNR.Text = "1";
+            this.costTNR.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.costTNR.TextChanged += new System.EventHandler(this.costTNR_TextChanged);
+            this.costTNR.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.costTNR_KeyPress);
+            // 
+            // costFPR
+            // 
+            this.costFPR.AccessibleRole = System.Windows.Forms.AccessibleRole.OutlineButton;
+            this.costFPR.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.costFPR.ForeColor = System.Drawing.Color.OrangeRed;
+            this.costFPR.Location = new System.Drawing.Point(484, 491);
+            this.costFPR.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.costFPR.Name = "costFPR";
+            this.costFPR.Size = new System.Drawing.Size(76, 20);
+            this.costFPR.TabIndex = 34;
+            this.costFPR.Text = "1";
+            this.costFPR.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.costFPR.TextChanged += new System.EventHandler(this.costFPR_TextChanged);
+            this.costFPR.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.costFPR_KeyPress);
+            // 
+            // costBox
+            // 
+            this.costBox.Enabled = false;
+            this.costBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.costBox.Location = new System.Drawing.Point(484, 517);
+            this.costBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.costBox.Name = "costBox";
+            this.costBox.Size = new System.Drawing.Size(76, 20);
+            this.costBox.TabIndex = 36;
+            this.costBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // costChart
+            // 
+            chartArea3.Name = "ChartArea1";
+            this.costChart.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.costChart.Legends.Add(legend3);
+            this.costChart.Location = new System.Drawing.Point(585, 349);
+            this.costChart.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.costChart.Name = "costChart";
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.costChart.Series.Add(series3);
+            this.costChart.Size = new System.Drawing.Size(410, 300);
+            this.costChart.TabIndex = 37;
+            this.costChart.Text = "chart1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1191, 450);
+            this.ClientSize = new System.Drawing.Size(996, 663);
+            this.Controls.Add(this.costChart);
+            this.Controls.Add(this.costBox);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.costFPR);
+            this.Controls.Add(this.costTNR);
+            this.Controls.Add(this.costFNR);
+            this.Controls.Add(this.costTPR);
             this.Controls.Add(this.aucBox);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.precisionBox);
@@ -501,13 +620,14 @@ this.accuracyBox.Enabled = false;
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "ROC Analysis Tool";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ratesChart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rocChart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.costChart)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -550,6 +670,13 @@ this.accuracyBox.Enabled = false;
         private System.Windows.Forms.TextBox aucBox;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.TextBox costTPR;
+        private System.Windows.Forms.TextBox costFNR;
+        private System.Windows.Forms.TextBox costTNR;
+        private System.Windows.Forms.TextBox costFPR;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox costBox;
+        private System.Windows.Forms.DataVisualization.Charting.Chart costChart;
     }
 }
 

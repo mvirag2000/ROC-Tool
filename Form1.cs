@@ -10,7 +10,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 namespace ROC_Tool
 {
     public partial class Form1 : Form
-    {
+    {   // DATA DIVISION //
         private Form2 form2;
         public DataTable resultsTable = new DataTable();
         public DataTable confusionTable = new DataTable();
@@ -22,7 +22,9 @@ namespace ROC_Tool
         public Series series6 = new Series();
         public Series series7 = new Series();   
         public decimal threshold = 0.50M; //threshold as <double> created some precision problems 
-        public double TPR, TNR, FPR, FNR; 
+        public double TPR, TNR, FPR, FNR;
+        public double precision, accuracy, balanced, f1;
+        public int totalPos, totalNeg; 
 
         public Form1()
         {
@@ -90,7 +92,6 @@ namespace ROC_Tool
             rocChart.ChartAreas[0].AxisY.Maximum = 1;
             rocChart.Legends[0].Enabled = false;
         }
-
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
@@ -125,8 +126,8 @@ namespace ROC_Tool
                     $"Details:\n\n{ex.StackTrace}");
                 }
 
-                int totalPos = resultsTable.AsEnumerable().Where(row => row.Field<int>("Actual") == 1).Count();
-                int totalNeg = resultsTable.AsEnumerable().Where(row => row.Field<int>("Actual") == 0).Count();
+                totalPos = resultsTable.AsEnumerable().Where(row => row.Field<int>("Actual") == 1).Count();
+                totalNeg = resultsTable.AsEnumerable().Where(row => row.Field<int>("Actual") == 0).Count();
                 textBox1.Text = resultsTable.Rows.Count.ToString("N");
                 textBox2.Text = totalPos.ToString("N");
                 textBox3.Text = totalNeg.ToString("N");
@@ -147,18 +148,24 @@ namespace ROC_Tool
                     FNR = (totalPos > 0) ? (double) falseNeg / totalPos : 1;
 
                     DataRow newRow = confusionTable.NewRow();
-                    newRow.ItemArray = new object[] { cutoff, TPR, TNR, FPR, FNR };
+                    newRow.ItemArray = new object[] { cutoff, TPR, TNR, FPR, FNR }; //Store the rates for display, not the counts 
                     confusionTable.Rows.Add(newRow);
                 }
                 series5.Points.AddXY(1, 1); //Force upper corner in case sample doesn't have enough FP 
+                series6.Points.AddXY(0, 0);
                 series6.Points.AddXY(1, 1);
+                double prevX = 1;
+                double prevY = 1;
+                double AUC = 0;
                 foreach (DataRow row in confusionTable.Rows)
                 {
                     series1.Points.AddXY(row["Cutoff"], row["TPR"]);
                     series2.Points.AddXY(row["Cutoff"], row["TNR"]);
                     series5.Points.AddXY(row["FPR"], row["TPR"]);
-                    series6.Points.AddXY(row["FPR"], row["FPR"]);
+                    AUC += (prevX - (double) row["FPR"]) * (prevY + (double) row["TPR"]) / 2;
+                    prevX = (double) row["FPR"]; prevY = (double) row["TPR"]; 
                 }
+                aucBox.Text = AUC.ToString("F2");
                 trackBar1_Scroll(sender, e);
             }
         }
@@ -183,11 +190,26 @@ namespace ROC_Tool
             series4.Points.AddXY(threshold, TPR);
             series4.Points.AddXY(threshold, TNR);
             series7.Points.AddXY(FPR, TPR);
+
+            double TP = TPR * totalPos; //Recover the counts (and lose precision) 
+            double TN = TNR * totalNeg;
+            double FP = FPR * totalNeg;
+            double FN = FNR * totalPos;
+
+            precision = (TP + FP) > 0 ? TP / (TP + FP) : 1; 
+            accuracy = (TP + TN) / (totalPos + totalNeg);
+            balanced = (TPR + TNR) / 2;
+            f1 = 2 * precision * TPR / (precision + TPR); 
+
             cutoffBox.Text = threshold.ToString();
             TPRBox.Text = TPR.ToString("F2");
             TNRBox.Text = TNR.ToString("F2");
             FPRBox.Text = FPR.ToString("F2");
             FNRBox.Text = FNR.ToString("F2");
+            precisionBox.Text = precision.ToString("F2");
+            accuracyBox.Text = accuracy.ToString("F2");
+            balancedBox.Text = balanced.ToString("F2");
+            f1Box.Text = f1.ToString("F2");
         }
         private void dataToolStripMenuItem_Click(object sender, EventArgs e)
         {

@@ -19,7 +19,10 @@ namespace ROC_Tool
         public Series rocdot = new Series();   
         public Series costdot = new Series();
         public Series lineCost = new Series();
-
+        public Series lineROC = new Series();
+        public Series lineMid = new Series();
+        public Series lineTPR = new Series();
+        public Series lineTNR = new Series();
         public decimal threshold = 0.50M; //threshold as <double> created some precision problems 
         public double TPR, TNR, FPR, FNR, cost;
         public double precision, accuracy, balanced, f1;
@@ -30,22 +33,6 @@ namespace ROC_Tool
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            needle = ratesChart.Series.Add("Threshold");
-            needle.ChartType = SeriesChartType.Line;
-            needle.Color = Color.Red;
-            needle.BorderWidth = 1;
-
-            ratedots = ratesChart.Series.Add("Dots");
-            ratedots.ChartType = SeriesChartType.Point;
-            ratedots.Color = Color.Black;
-            ratedots.BorderWidth = 3;
-
-            rocdot = rocChart.Series.Add("ROCDot");
-            rocdot.ChartType = SeriesChartType.Point;
-            rocdot.Color = Color.Black;
-            rocdot.BorderWidth = 3;
-            rocdot.CustomProperties = "IsXAxisQuantitative=True";
-                        
             costdot = costChart.Series.Add("CostDot");
             costdot.ChartType = SeriesChartType.Point;
             costdot.Color = Color.Black;
@@ -111,8 +98,7 @@ namespace ROC_Tool
         }
         public void plotTPRChart()
         {
-            Series lineTPR = new Series();
-            Series lineTNR = new Series();
+            ratesChart.Series.Clear();
 
             lineTPR = ratesChart.Series.Add("TPR");
             lineTPR.ChartType = SeriesChartType.Line;
@@ -123,6 +109,16 @@ namespace ROC_Tool
             lineTNR.ChartType = SeriesChartType.Line;
             lineTNR.Color = Color.DarkOrange;
             lineTNR.BorderWidth = 2;
+
+            needle = ratesChart.Series.Add("Threshold");
+            needle.ChartType = SeriesChartType.Line;
+            needle.Color = Color.Red;
+            needle.BorderWidth = 1;
+
+            ratedots = ratesChart.Series.Add("Dots");
+            ratedots.ChartType = SeriesChartType.Point;
+            ratedots.Color = Color.Black;
+            ratedots.BorderWidth = 3;
 
             ratesChart.ChartAreas[0].AxisX.Title = "Threshold Value";
             ratesChart.ChartAreas[0].AxisX.Minimum = 0;
@@ -146,9 +142,7 @@ namespace ROC_Tool
         }
         public void plotROCChart()
         {
-            Series lineROC = new Series();
-            Series lineMid = new Series();
-
+            rocChart.Series.Clear();
             lineROC = rocChart.Series.Add("ROC");
             lineROC.ChartType = SeriesChartType.Line;
             lineROC.Color = Color.DarkOrange;
@@ -159,6 +153,12 @@ namespace ROC_Tool
             lineMid.BorderDashStyle = ChartDashStyle.Dash;
             lineMid.Color = Color.DarkBlue;
             lineMid.BorderWidth = 1;
+
+            rocdot = rocChart.Series.Add("ROCDot");
+            rocdot.ChartType = SeriesChartType.Point;
+            rocdot.Color = Color.Black;
+            rocdot.BorderWidth = 3;
+            rocdot.CustomProperties = "IsXAxisQuantitative=True";
 
             rocChart.ChartAreas[0].AxisX.Title = "False Positive Rate";
             rocChart.ChartAreas[0].AxisX.Minimum = 0;

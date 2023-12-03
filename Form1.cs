@@ -84,9 +84,9 @@ namespace ROC_Tool
                 }
                 totalPos = resultsTable.AsEnumerable().Where(row => row.Field<int>("Actual") == 1).Count();
                 totalNeg = resultsTable.AsEnumerable().Where(row => row.Field<int>("Actual") == 0).Count();
-                textBox1.Text = resultsTable.Rows.Count.ToString("N");
-                textBox2.Text = totalPos.ToString("N");
-                textBox3.Text = totalNeg.ToString("N");
+                textBox1.Text = resultsTable.Rows.Count.ToString("N0");
+                textBox2.Text = totalPos.ToString("N0");
+                textBox3.Text = totalNeg.ToString("N0");
 
                 confusionTable = BuildConfusionTable(resultsTable);
 
@@ -268,7 +268,7 @@ namespace ROC_Tool
             f1 = 2 * precision * TPR / (precision + TPR);
 
             costBox.Text = computeCost().ToString();
-            cutoffBox.Text = threshold.ToString();
+            cutoffBox.Text = threshold.ToString("F2");
             TPRBox.Text = TPR.ToString("F2");
             TNRBox.Text = TNR.ToString("F2");
             FPRBox.Text = FPR.ToString("F2");

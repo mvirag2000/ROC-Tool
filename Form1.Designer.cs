@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -127,17 +127,17 @@
             // 
             // ratesChart
             // 
-            chartArea1.Name = "ChartArea1";
-            this.ratesChart.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.ratesChart.Legends.Add(legend1);
+            chartArea4.Name = "ChartArea1";
+            this.ratesChart.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.ratesChart.Legends.Add(legend4);
             this.ratesChart.Location = new System.Drawing.Point(14, 31);
             this.ratesChart.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.ratesChart.Name = "ratesChart";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.ratesChart.Series.Add(series1);
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            this.ratesChart.Series.Add(series4);
             this.ratesChart.Size = new System.Drawing.Size(533, 300);
             this.ratesChart.TabIndex = 2;
             this.ratesChart.Text = "chart1";
@@ -156,17 +156,17 @@
             // 
             // rocChart
             // 
-            chartArea2.Name = "ChartArea1";
-            this.rocChart.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.rocChart.Legends.Add(legend2);
+            chartArea5.Name = "ChartArea1";
+            this.rocChart.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            this.rocChart.Legends.Add(legend5);
             this.rocChart.Location = new System.Drawing.Point(584, 31);
             this.rocChart.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.rocChart.Name = "rocChart";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.rocChart.Series.Add(series2);
+            series5.ChartArea = "ChartArea1";
+            series5.Legend = "Legend1";
+            series5.Name = "Series1";
+            this.rocChart.Series.Add(series5);
             this.rocChart.Size = new System.Drawing.Size(410, 300);
             this.rocChart.TabIndex = 4;
             this.rocChart.Text = "chart1";
@@ -241,10 +241,10 @@
             // 
             this.FPRBox.Enabled = false;
             this.FPRBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FPRBox.Location = new System.Drawing.Point(400, 491);
+            this.FPRBox.Location = new System.Drawing.Point(423, 491);
             this.FPRBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.FPRBox.Name = "FPRBox";
-            this.FPRBox.Size = new System.Drawing.Size(76, 20);
+            this.FPRBox.Size = new System.Drawing.Size(53, 20);
             this.FPRBox.TabIndex = 12;
             this.FPRBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -252,7 +252,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(336, 494);
+            this.label4.Location = new System.Drawing.Point(374, 494);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(35, 13);
@@ -264,10 +264,10 @@
             // 
             this.TNRBox.Enabled = false;
             this.TNRBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TNRBox.Location = new System.Drawing.Point(400, 465);
+            this.TNRBox.Location = new System.Drawing.Point(423, 465);
             this.TNRBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.TNRBox.Name = "TNRBox";
-            this.TNRBox.Size = new System.Drawing.Size(76, 20);
+            this.TNRBox.Size = new System.Drawing.Size(53, 20);
             this.TNRBox.TabIndex = 14;
             this.TNRBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -275,7 +275,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(336, 468);
+            this.label5.Location = new System.Drawing.Point(374, 468);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(37, 13);
@@ -288,10 +288,10 @@
             // 
             this.FNRBox.Enabled = false;
             this.FNRBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FNRBox.Location = new System.Drawing.Point(400, 439);
+            this.FNRBox.Location = new System.Drawing.Point(423, 439);
             this.FNRBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.FNRBox.Name = "FNRBox";
-            this.FNRBox.Size = new System.Drawing.Size(76, 20);
+            this.FNRBox.Size = new System.Drawing.Size(53, 20);
             this.FNRBox.TabIndex = 16;
             this.FNRBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -299,7 +299,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(336, 442);
+            this.label6.Location = new System.Drawing.Point(374, 442);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(36, 13);
@@ -311,10 +311,10 @@
             // 
             this.TPRBox.Enabled = false;
             this.TPRBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TPRBox.Location = new System.Drawing.Point(400, 413);
+            this.TPRBox.Location = new System.Drawing.Point(423, 413);
             this.TPRBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.TPRBox.Name = "TPRBox";
-            this.TPRBox.Size = new System.Drawing.Size(76, 20);
+            this.TPRBox.Size = new System.Drawing.Size(53, 20);
             this.TPRBox.TabIndex = 18;
             this.TPRBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -322,7 +322,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(336, 416);
+            this.label7.Location = new System.Drawing.Point(374, 416);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(36, 13);
@@ -335,10 +335,10 @@
             // 
             this.cutoffBox.Enabled = false;
             this.cutoffBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cutoffBox.Location = new System.Drawing.Point(400, 387);
+            this.cutoffBox.Location = new System.Drawing.Point(423, 387);
             this.cutoffBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cutoffBox.Name = "cutoffBox";
-            this.cutoffBox.Size = new System.Drawing.Size(76, 20);
+            this.cutoffBox.Size = new System.Drawing.Size(53, 20);
             this.cutoffBox.TabIndex = 20;
             this.cutoffBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -346,7 +346,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(336, 390);
+            this.label8.Location = new System.Drawing.Point(374, 390);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(45, 13);
@@ -362,7 +362,7 @@
             this.precisionBox.Location = new System.Drawing.Point(234, 390);
             this.precisionBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.precisionBox.Name = "precisionBox";
-            this.precisionBox.Size = new System.Drawing.Size(76, 20);
+            this.precisionBox.Size = new System.Drawing.Size(53, 20);
             this.precisionBox.TabIndex = 28;
             this.precisionBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -385,7 +385,7 @@
             this.accuracyBox.Location = new System.Drawing.Point(234, 416);
             this.accuracyBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.accuracyBox.Name = "accuracyBox";
-            this.accuracyBox.Size = new System.Drawing.Size(76, 20);
+            this.accuracyBox.Size = new System.Drawing.Size(53, 20);
             this.accuracyBox.TabIndex = 26;
             this.accuracyBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -409,7 +409,7 @@
             this.balancedBox.Location = new System.Drawing.Point(234, 442);
             this.balancedBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.balancedBox.Name = "balancedBox";
-            this.balancedBox.Size = new System.Drawing.Size(76, 20);
+            this.balancedBox.Size = new System.Drawing.Size(53, 20);
             this.balancedBox.TabIndex = 24;
             this.balancedBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -433,7 +433,7 @@
             this.f1Box.Location = new System.Drawing.Point(234, 468);
             this.f1Box.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.f1Box.Name = "f1Box";
-            this.f1Box.Size = new System.Drawing.Size(76, 20);
+            this.f1Box.Size = new System.Drawing.Size(53, 20);
             this.f1Box.TabIndex = 22;
             this.f1Box.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -559,17 +559,17 @@
             // 
             // costChart
             // 
-            chartArea3.Name = "ChartArea1";
-            this.costChart.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.costChart.Legends.Add(legend3);
+            chartArea6.Name = "ChartArea1";
+            this.costChart.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            this.costChart.Legends.Add(legend6);
             this.costChart.Location = new System.Drawing.Point(585, 349);
             this.costChart.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.costChart.Name = "costChart";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.costChart.Series.Add(series3);
+            series6.ChartArea = "ChartArea1";
+            series6.Legend = "Legend1";
+            series6.Name = "Series1";
+            this.costChart.Series.Add(series6);
             this.costChart.Size = new System.Drawing.Size(410, 300);
             this.costChart.TabIndex = 37;
             this.costChart.Text = "chart1";
